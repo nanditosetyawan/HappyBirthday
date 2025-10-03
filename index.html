@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <!-- Background music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="audio/background.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Halaman utama -->
+ <div class="page active" id="home">
+  <div class="content">
+   <div class="layered-text" aria-hidden="false">
+      <!-- layer belakang pink -->
+      <span class="bg">Haloo!!! <br> xxxxxx xxxxx</span>
+      <!-- layer depan putih -->
+      <span class="fg">Haloo!!! <br> xxxxxx xxxxx</span>
+    </div>
+
+    <div class="controls">
+        <img src="/gambar/halo1.gif" alt="haloo" width="250px" class="gif-rounded"/>
+<br><br><br>
+
+      <button class="next-btn" onclick="goToPage('salam')">tap yaaa🎉</button>
+    </div>
+  </div>
+</div>
+ <!-- Halaman 1 -->
+<div class="page" id="salam">
+  <div class="content">
+    <div class="layered-wrapper">
+      <div class="layered-text">
+        <span class="bg" style="font-size: 38px;">ada apaa yahh iniiii</span>
+        <span class="fg" style="font-size: 38px;">ada apaa yahh iniiii</span>
+        <span class="emot" style="margin-top: 8px;">😁😁</span>
+      </div>
+      
+    </div>
+
+    <div class="controls">
+        <img src="/gambar/smile.gif" alt="haloo" width="250px" class="gif-rounded"/>
+<br><br><br>
+
+      <button class="next-btnspesial" onclick="goToPage('info')">tap lagiii😝</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Halaman 2 -->
+<div class="page" id="info" 
+     style="width:100%; max-width:600px; margin:0 auto; padding-top:140%; padding-bottom: 140%; text-align:center;">
+  <div class="content" style="line-height:1;">
+
+    <!-- Layered text -->
+    <div class="layered-text" aria-hidden="false" style="margin:0; padding:0; line-height:1;">
+      <span class="bg" style="display:block; color:pink;">TEBAKK BULAN APA!</span>
+      <span class="fg" style="display:block; color:white; position:relative; top:0;">TEBAKK BULAN APA!</span>
+    </div>
+
+    <!-- Gambar -->
+<img src="/gambar/NO.png" alt="NO" width="250px" style="display:block; margin:0; padding:0;"> 
+<img src="/gambar/plus.png" alt="Plus" width="50px" style="display:block; margin-top: -11%; padding:0;"> 
+<img src="/gambar/virus.png" alt="virus" width="250px" style="display:block; margin-top: -12%; padding:0;"> <img src="/gambar/plus.png" alt="Plus" width="50px" style="display:block; margin-top: -11%; padding:0;"> 
+<img src="/gambar/ember.png" alt="ember" width="250px" style="display:block; margin-top: -12%; padding:0;">
+
+    <!-- Button -->
+    <div class="controls" style="margin-top:-10%;">
+      <form id="tebakForm" class="soft-form">
+  <input type="text" name="tebakan" placeholder="jawab dsini klo jago ^_^" class="soft-input" required><br><br><br>
+   <div id="feedback" style="color:red; font-weight:bold; margin-top:5px; display:none;"></div><br>
+  <button type="submit" class="next-btn" style="padding:10px 20px; font-size:16px; cursor:pointer;">tap yaaa🎉</button>
+</form>
+     
+    </div>
+
+  </div>
+</div>
+
+
+ <!-- Halaman 3 -->
+ <div class="page" id="hbdangka">
+  <div class="content">
+    <div class="layered-text" aria-hidden="false">
+      <!-- layer belakang pink -->
+      <span class="bg">Happy Birthday <br/> ke-<span class="age"></span>! YAAA</span>
+      <!-- layer depan putih -->
+      <span class="fg">Happy Birthday <br/> ke-<span class="age"></span>! YAAA</span>
+    </div>
+
+    <div class="controls">
+        <img src="/gambar/buubu1.gif" alt="Kue Ulang Tahun" width="200px" class="gif-rounded"/>
+<br><br><br>
+<audio id="backSound" src="song/hbd_angka.mp3" preload="auto" loop></audio>
+      <button class="next-btn hidden-btn" onclick="goToPage('surrat')">tap yaaa🎉</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Halaman 4 -->
+<div class="page" id="surrat">
+  <div class="content">
+    <div class="layered-wrapper">
+      <div class="layered-text">
+        <span class="bg" style="font-size: 40px;">Bukaa dongg</span>
+        <span class="fg" style="font-size: 40px;">Bukaa dongg</span>
+      </div>
+      <span class="emot">😡</span>
+    </div>
+
+    <img src="/gambar/surat.png" 
+         alt="surat" 
+         class="surat-img" 
+         onclick="goToPage('about')">
+  </div>
+</div>
+
+  <!-- Halaman 5 -->
+  <div class="page" id="about">
+    <div class="content">
+<div class="paper">
+      <h2 id="ucapan">Ucapan Spesial</h2>
+      <p  id="kata">Semoga sehat selalu dan makin sukses! 💖 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure in facilis totam quia recusandae sed! A itaque at ut natus, animi similique atque veniam voluptas perspiciatis repudiandae, perferendis unde qui.
+        Lorem, ipsum dolor sit amet consectetur ad
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem labore nisi totam aut cumque libero vitae, repellendus minus magnam eveniet dignissimos. Excepturi, laboriosam perferendis vel laudantium recusandae quod perspiciatis quibusdam.ipisicing elit. Voluptatibus atque, blanditiis qui repellendus consequuntur eaque explicabo sit harum. Facere quaerat temporibus placeat sapiente ad fugit atque voluptas in dolore vero!
+      </p>
+            <div class="controls">
+        <button class="next-btn" onclick="goToPage('fotopprint')">lanjutt sihh</button>
+      </div>
+</div>
+
+
+    </div>
+  </div>
+
+
+
+ <!-- Halaman 6 -->
+  <div class="page" id="fotopprint">
+    <div class="content">
+<img src="/gambar/print.png" alt="printer" class="mesinprint">
+
+      <div class="controls">
+        <button class="next-btn" onclick="goToPage('foto')">meluncurr🚀</button>
+      </div>
+    </div>
+  </div>
+
+
+
+    <div class="page" id="foto">
+    <div class="content">
+    <div class="layered-text" aria-hidden="false">
+      <!-- layer belakang pink -->
+      <span class="bg">Happy Birthday <br/>XX</span>
+      <!-- layer depan putih -->
+      <span class="fg">Happy Birthday <br/>XX</span>
+    </div>
+
+      <div class="controls">
+        <button class="next-btn" onclick="goToPage('kue')">meluncurr🚀</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Halaman 7 -->
+  <div class="page" id="kue">
+    <div class="content">
+
+      <div class="layered-text" aria-hidden="false">
+      <!-- layer belakang pink -->
+      <span class="bg">EITSS JANGAN LUPAA!!</span>
+      <!-- layer depan putih -->
+      <span class="fg">EITSS JANGAN LUPAA!!</span>
+    </div>
+    <br>
+   <div class="cake">
+  <img class="cake-img" src="gambar/kue2.png" alt="Kue ulang tahun">
+  <img id="flame" class="flame-gif" src="gambar/api.gif" alt="Api lilin">
+</div>
+
+
+
+    <div class="layered-text" aria-hidden="false">
+      <!-- layer belakang pink -->
+      <span class="bg">Tiupp Lilinnya dulu dongg</span>
+      <!-- layer depan putih -->
+      <span class="fg">Tiupp Lilinnya dulu dongg</span>
+    </div>
+
+      
+      <div class="controls">
+        <button id="kueNextBtn" class="next-btn" style="display:none; opacity:0;" onclick="goToPage('byee')">next</button>
+      </div>
+    </div>
+  </div>
+
+ <!-- Halaman 8 -->
+  <div class="page" id="byee">
+  <div class="content">
+    <div class="layered-wrapper">
+      <div class="layered-text">
+        <span class="bg" style="font-size: 38px;">Tadi kereen gasii</span>
+        <span class="fg" style="font-size: 38px;">Tadi kereen gasii</span>
+ 
+      </div>
+      
+    </div>
+
+    <div class="controls">
+        <img src="/gambar/minion.gif" alt="minion" width="280px" class="gif-rounded"/>
+<br><br><br>
+
+      <div class="cont">
+          <button class="contlef-btn" onclick="showEnggak()">ENGGAK</button>
+  <button class="contrig-btn" onclick="goToPage('keren')">KEREN BANGET</button>
+
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+
+ <!-- Halaman 9 -->
+ <div class="page" id="keren">
+  <div class="content">
+   <div class="layered-text" aria-hidden="false">
+      <!-- layer belakang pink -->
+      <span class="bg">TERIMAAAA <br> KASIHHHH!!!</span>
+      <!-- layer depan putih -->
+      <span class="fg">TERIMAAAA <br> KASIHHHH!!!</span>
+    </div>
+
+    <div class="controls">
+        <img src="/gambar/terima.gif" alt="haloo" width="290px" class="gif-rounded"/>
+<br><br><br>
+
+      <button class="next-btn" style="height: 50px; width: 120px; background: #e84646; color: #ffffff;" onclick="goHome()">RESET</button>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Canvas untuk kembang api -->
+  <canvas id="fireworks"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

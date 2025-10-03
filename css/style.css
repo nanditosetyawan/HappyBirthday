@@ -1,0 +1,439 @@
+/* === Font Import === */
+@font-face {
+  font-family: 'ComicKids';
+  src: url('../fonts/ComicKids-Wp0ln.otf') format('opentype');
+  font-display: swap;
+}
+
+/* === Base === */
+* { box-sizing: border-box; }
+html,body { height: 100%; margin: 0; }
+body {
+  margin: 0;
+  background: #ecb5b5;
+  color: white;
+  font-family: 'ComicKids', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.gif-rounded {
+
+  border-radius: 40px; /* semakin besar angka, semakin tumpul */
+}
+/* === Page wrapper === */
+.page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  padding: 20px;
+    display: none; /* semua page disembunyikan */
+    overflow: hidden;
+}
+.page.active { opacity: 1; z-index: 10; 
+  display: flex; /* hanya halaman aktif tampil */
+}
+/* Scrollable hanya untuk halaman fokus */
+.page#about.active {
+  overflow-y: auto;    /* scroll muncul hanya di sini */
+  display: block;      /* agar konten mulai dari atas */
+  justify-content: unset;
+  align-items: unset;
+  height: 100vh;
+  width: 100%;         /* penuh viewport */
+  box-sizing: border-box;
+  padding: 0 20px;     /* optional: beri padding konten */
+}
+/* Content box */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+ 
+
+  max-width: 95%;
+}
+
+
+
+/* === Layered text (sekarang 1 font saja) === */
+.layered-text {
+  display: grid;
+  font-family: 'ComicKids', sans-serif;
+  font-size: 64px;
+  line-height: 1;
+}
+
+.layered-text .bg {
+  grid-area: 1/1;
+  color: #ff66cc; /* pink belakang */
+  transform: translate(3px, 3px); /* geser sedikit supaya terlihat di bawah putih */
+  z-index: 1;
+}
+
+.layered-text .fg {
+  grid-area: 1/1;
+  color: #fff; /* putih depan */
+  z-index: 2;
+}
+
+
+/* === Number animation (versi per langkah) === */
+.age {
+  display: inline-block;
+  overflow: hidden;
+  height: 1em;
+  vertical-align: bottom;
+}
+.age-container {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s ease; /* halus tiap geser */
+}
+.age-container div {
+  height: 1em;
+  line-height: 1em;
+}
+
+/* Tombol */
+.next-btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #ffc9d6;
+  color: #111;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform .15s ease;
+  height: 50px;
+}
+.next-btn:hover { transform: translateY(-3px); }
+
+/* Fireworks */
+#fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -3;
+}
+
+
+
+/* === Layered text wrapper untuk halaman surrat === */
+.layered-wrapper {
+  display: inline-flex;       /* teks + emot sejajar horizontal */
+  align-items: center;        /* rata tengah vertikal */
+  gap: 10px;                  /* jarak antar teks dan emot */
+  margin-bottom: 10px;        /* jarak ke gambar surat */
+}
+
+/* Emot agar proporsional */
+.emot {
+  font-size: 2.5rem;          /* lebih besar dari teks default */
+  line-height: 1;
+}
+
+/* Gambar surat di bawah teks */
+.surat-img {
+  width: 390px;               /* bisa disesuaikan */
+  max-width: 90vw;            /* agar responsif di layar kecil */
+  height: auto;
+  display: block;
+  margin: 0 auto;             /* rata tengah */
+  cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.surat-img:hover {
+  transform: scale(1.5); /* memperbesar 10% saat hover */
+}
+
+
+
+/*amplop*/
+
+
+#about .paper {
+  width: 90vw;
+  max-width: 500px;
+  height: auto;
+
+  /* Border dalam pink */
+  border: 5px solid rgba(255, 105, 180, 0.9);
+  border-radius: 20px;
+
+  /* Border luar putih */
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.95);
+
+  padding: 2rem;
+  text-align: center;
+  color: #333;
+  overflow: hidden; /* penting supaya ::before tidak keluar */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);  /* start agak turun */
+  opacity: 0;                        /* start invisible */
+  transition: all 0.8s ease;
+   z-index: 1; /* pastikan konten di atas pseudo-element */
+}
+/* Efek glass murni putih di dalam */
+#about .paper::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* isi penuh ke dalam */
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.64); /* putih glass */
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  z-index: 0; /* di belakang teks */
+}
+#about .paper * {
+  position: relative;
+  z-index: 1; /* teks & isi tetap di atas glass */
+}
+/* Saat muncul */
+#about .paper.show {
+  opacity: 1;
+  transform: translate(-50%, -60%);  /* naik ke tengah */
+}
+
+
+#ucapan {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #111;
+}
+
+#kata {
+  line-height: 1.6;
+  font-size: 1rem;
+  color: #222;
+}
+
+.paper .controls {
+  margin-top: 1.5rem;
+}
+
+.paper .next-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  background: #ffd3dd;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.paper .next-btn:hover {
+  background: #f0f0f0;
+}
+
+
+/* input */
+.soft-form {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.soft-input {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.soft-input:focus {
+  border-color: #f6d365;
+  box-shadow: 0 4px 6px rgba(246, 211, 101, 0.3);
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .layered-text { font-size: 36px; }
+  .next-btn { font-size: 16px; padding: 8px 16px; }
+     
+
+    #kata{
+   font-size: 15px;   
+        line-height: 1.2;
+    }
+    #ucapan{
+        font-size: 33px;
+          margin-top: 14%;
+    }
+
+
+
+
+}
+
+
+/*kue*/
+.cake {
+  position: relative;
+  display: inline-block;
+}
+
+.cake .cake-img {        /* khusus kue */
+  width: 280px;
+  display: block;
+}
+
+.flame-gif {             /* khusus api */
+  position: absolute;
+  left: 46%;
+  top: -60px;            /* atur posisi agar pas di lilin */
+  width: 20px;           /* ukuran flame independen */
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/*tombol jejer*/
+.cont {
+  display: flex;
+  justify-content: center; /* biar di tengah */
+  gap: 15px;              /* jarak antar tombol */
+  margin-top: 20px;
+}
+
+.contlef-btn {
+  padding-top: 10px 20px;
+  padding-left: 15px 15px;
+    width: 150px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #eb1a4a;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform .15s ease;
+  height: 50px;
+}
+
+.contrig-btn {
+  padding-top: 10px 20px;
+  padding-left: 15px 15px;
+    width: 150px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #82e99f;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform .15s ease;
+  height: 50px;
+}
+.cont-btn:hover { transform: translateY(-3px); }
+
+
+
+/* styling ini hanya aktif di popup yang punya class swal-custom */
+.swal-custom .swal2-title {
+  order: 0 !important;
+  margin-bottom: 6px;
+}
+
+.swal-custom .swal2-image {
+  order: 1 !important;
+  margin: 10px auto;
+}
+
+.swal-custom .swal2-html-container {
+  order: 2 !important;
+}
+/* tombol tetap di bawah */
+.swal-custom .swal2-actions {
+  order: 3 !important;
+  margin-top: 15px;
+  border-radius: 250px !important;       /* sudut melengkung */
+  padding: 10px 25px !important;        /* biar lebih gede */
+}
+
+
+.swal-custom .swal2-styled.swal2-confirm {
+  background-color: #ff69b4 !important; /* pink */
+  height: 60px;
+  border-radius: 15px !important;       /* sudut melengkung */
+  padding: 10px 25px !important;        /* lebih besar */
+  font-size: 16px;
+  font-weight: bold;
+  color: white !important;
+}
+
+
+/* tombol kue*/
+
+.fade-in {
+  display: block !important;
+  animation: fadeIn 1.9s forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/*tombol hbd angka*/
+
+/* Tombol default hidden */
+.hidden-btn {
+  display: none;          /* sembunyikan awalnya */
+  opacity: 0;             /* untuk animasi fade-in */
+  transition: opacity 1s ease;  /* efek pudar */
+}
+
+/* Animasi fade-in */
+.fade-in {
+  display: inline-block !important;
+  opacity: 1 !important;
+   animation: fadeIn 1.9s forwards;
+}
+
+
+
+.next-btnspesial {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #ffc9d6;
+  color: #111;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: opacity 0.5s ease, transform 0.15s ease;
+  height: 50px;
+  opacity: 0;          /* awalnya hilang */
+  pointer-events: none; /* supaya tidak bisa diklik saat tersembunyi */
+}
+
+.next-btnspesial.show {
+  opacity: 1;          /* muncul */
+  pointer-events: auto; /* aktifkan klik */
+}
+
+/* rapii in page 2*?
+
+
+/* print foto */
+
+.mesinprint {
+
+}
