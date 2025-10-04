@@ -436,8 +436,8 @@ body {
   min-height: 100vh;
   width: 100%;
   /* jarak atas & bawah minimal 40px + safe-area jika ada */
-  padding-top: max(40px, calc(20px + env(safe-area-inset-top)));
-  padding-bottom: max(40px, calc(20px + env(safe-area-inset-bottom)));
+  padding-top: max(60px, calc(20px + env(safe-area-inset-top)));
+  padding-bottom: max(60px, calc(20px + env(safe-area-inset-bottom)));
   box-sizing: border-box;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch; /* smooth scroll di iOS */
@@ -449,8 +449,8 @@ body {
   and (height: 844px) 
   and (-webkit-device-pixel-ratio: 3) {
     #info, #paper {
-        padding-top: max(40px, calc(20px + env(safe-area-inset-top)));
-        padding-bottom: max(40px, calc(20px + env(safe-area-inset-bottom)));
+        padding-top: max(60px, calc(20px + env(safe-area-inset-top)));
+        padding-bottom: max(60px, calc(20px + env(safe-area-inset-bottom)));
     }
 }
 
@@ -460,24 +460,24 @@ body {
   and (height: 915px) 
   and (-webkit-device-pixel-ratio: 2.625) {
     #info, #paper {
-        padding-top: 40px;    
-        padding-bottom: 40px;
+        padding-top: 60px;    
+        padding-bottom: 60px;
     }
 }
 
 /* ===== Fallback untuk HP pendek / mini ===== */
 @media (max-height: 700px) {
   #info, #paper {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 }
 
 /* ===== Fallback untuk HP sangat tinggi / ultrawide ===== */
 @media (min-height: 900px) {
   #info, #paper {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 }
 
