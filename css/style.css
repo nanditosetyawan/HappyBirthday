@@ -528,8 +528,8 @@ body {
 
 /* aktifkan animasi saat tombol diklik */
 .photo.drop {
-  animation: drop 1.40s cubic-bezier(0.0001, 0.03, 0.2, 0.6) forwards;
-  animation-iteration-count: 3;
+  animation: drop 0.9s cubic-bezier(0.0001, 0.03, 0.2, 0.6) forwards;
+  animation-iteration-count: 4;
 }
 
 
