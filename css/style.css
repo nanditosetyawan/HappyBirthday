@@ -485,6 +485,13 @@ body {
 
 /* print foto */
 
-.mesinprint {
-width: 280px;
+.stack-grid {
+  display: grid;
+  width: 300px;
+  height: 300px;
+}
+
+.stack-grid img {
+  grid-area: 1 / 1;  /* semua gambar menempati grid yang sama */
+  width: 280px;
 }
