@@ -431,25 +431,27 @@ body {
 
 /* rapii in page 2*?
 /* ===== Default untuk semua HP ===== */
+/* ===== Default untuk semua HP ===== */
 #info, #paper {
-  position: relative;                /* jangan absolute */
-  min-height: 100vh;                 /* minimal sama tinggi layar */
+  position: relative;
+  min-height: 100vh;
   width: 100%;
-  padding-top: calc(20px + env(safe-area-inset-top));
-  padding-bottom: calc(20px + env(safe-area-inset-bottom));
+  /* jarak atas & bawah minimal 1cm + safe-area jika ada */
+  padding-top: max(1cm, calc(20px + env(safe-area-inset-top)));
+  padding-bottom: max(1cm, calc(20px + env(safe-area-inset-bottom)));
   box-sizing: border-box;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch; /* smooth di iOS */
+  -webkit-overflow-scrolling: touch; /* smooth scroll di iOS */
 }
 
-/* ===== iPhone 14 ===== */
+/* ===== iPhone 14 (notch) ===== */
 @media only screen 
   and (width: 390px) 
   and (height: 844px) 
   and (-webkit-device-pixel-ratio: 3) {
     #info, #paper {
-        padding-top: calc(20px + env(safe-area-inset-top));
-        padding-bottom: calc(20px + env(safe-area-inset-bottom));
+        padding-top: max(1cm, calc(20px + env(safe-area-inset-top)));
+        padding-bottom: max(1cm, calc(20px + env(safe-area-inset-bottom)));
     }
 }
 
@@ -459,26 +461,27 @@ body {
   and (height: 915px) 
   and (-webkit-device-pixel-ratio: 2.625) {
     #info, #paper {
-        padding-top: 20px;    /* safe-area tidak ada efek */
-        padding-bottom: 20px;
+        padding-top: 1cm;    /* safe-area tidak ada efek */
+        padding-bottom: 1cm;
     }
 }
 
-/* ===== Fallback untuk HP lain tinggi pendek / mini ===== */
+/* ===== Fallback untuk HP pendek / mini ===== */
 @media (max-height: 700px) {
   #info, #paper {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 1cm;
+    padding-bottom: 1cm;
   }
 }
 
 /* ===== Fallback untuk HP sangat tinggi / ultrawide ===== */
 @media (min-height: 900px) {
   #info, #paper {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: max(1cm, 40px);
+    padding-bottom: max(1cm, 40px);
   }
 }
+
 
 
 /* print foto */
