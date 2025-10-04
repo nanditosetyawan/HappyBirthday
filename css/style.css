@@ -496,20 +496,20 @@ body {
 /* Printer bawah */
 .printer-base {
   position: absolute;
-  top: 50px; /* posisi dasar printer */
+  top: -10px; /* posisi dasar printer */
   left: 50%;
   transform: translateX(-50%);
-  width: 280px;
+  width: 290px;
   z-index: 2;
 }
 
 /* Tutup printer */
 .printer-top {
   position: absolute;
-  top: 50px; /* samain dengan base */
+  top: -10px; /* samain dengan base */
   left: 50%;
   transform: translateX(-50%);
-  width: 280px;
+  width: 290px;
   z-index: 4; /* biar di atas foto & base */
 }
 /* Foto */
@@ -528,8 +528,8 @@ body {
 
 /* aktifkan animasi saat tombol diklik */
 .photo.drop {
-  animation: drop 0.7s linear forwards;
-  animation-iteration-count: 4;
+  animation: drop 1.40s cubic-bezier(0.0001, 0.03, 0.2, 0.6) forwards;
+  animation-iteration-count: 3;
 }
 
 
@@ -548,14 +548,19 @@ body {
 /* Keyframes drop → jatuh sekali ke bawah */
 @keyframes drop {
   0% {
-    transform: translate(-50%, -50px); /* mulai sedikit di atas printer */
-    opacity: 0; /* benar-benar hilang */
+    transform: translate(-50%, -50px);
+    opacity: 0;
   }
-  15% {
-    opacity: 1; /* cepat jadi terlihat */
+  20% { /* awal super cepat */
+    transform: translate(-50%, 150px);
+    opacity: 1;
   }
-  100% {
-    transform: translate(-50%, 100vh); /* jatuh ke bawah layar */
-    opacity: 1; /* tetap terlihat */
+  60% { /* mulai melambat */
+    transform: translate(-50%, 600px);
+    opacity: 1;
+  }
+  100% { /* bisa ngebut lagi */
+    transform: translate(-50%, 100vh);
+    opacity: 1;
   }
 }
