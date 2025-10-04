@@ -496,7 +496,7 @@ body {
 /* Printer bawah */
 .printer-base {
   position: absolute;
-  top: 200px; /* posisi dasar printer */
+  top: 50px; /* posisi dasar printer */
   left: 50%;
   transform: translateX(-50%);
   width: 280px;
@@ -506,45 +506,56 @@ body {
 /* Tutup printer */
 .printer-top {
   position: absolute;
-  top: 200px; /* samain dengan base */
+  top: 50px; /* samain dengan base */
   left: 50%;
   transform: translateX(-50%);
   width: 280px;
   z-index: 4; /* biar di atas foto & base */
 }
 /* Foto */
+/* Foto (default diam, transparan) */
+/* Foto (default diam, sembunyi di atas printer) */
 .photo {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: -80px;
   transform: translateX(-50%);
   opacity: 0;
   width: 280px;
   z-index: 3;
-  animation: drop 2s linear forwards; /* linear biar terus jatuh */
+  
 }
 
-/* Stagger tiap foto */
-.photo:nth-child(2) { animation-delay: 0.1s; }
-.photo:nth-child(3) { animation-delay: 0.2s; }
-.photo:nth-child(4) { animation-delay: 0.3s; }
-.photo:nth-child(5) { animation-delay: 0.4s; }
-.photo:nth-child(6) { animation-delay: 0.5s; }
-.photo:nth-child(7) { animation-delay: 0.6s; }
-.photo:nth-child(8) { animation-delay: 0.7s; }
-.photo:nth-child(9) { animation-delay: 0.8s; }
+/* aktifkan animasi saat tombol diklik */
+.photo.drop {
+  animation: drop 0.7s linear forwards;
+  animation-iteration-count: 4;
+}
 
-/* Animasi drop terus jatuh */
+
+
+/* Stagger */
+.photo.drop:nth-of-type(1) { animation-delay: 0s; }
+.photo.drop:nth-of-type(2) { animation-delay: 0.2s; }
+.photo.drop:nth-of-type(3) { animation-delay: 0.4s; }
+.photo.drop:nth-of-type(4) { animation-delay: 0.6s; }
+.photo.drop:nth-of-type(5) { animation-delay: 0.8s; }
+.photo.drop:nth-of-type(6) { animation-delay: 1s; }
+.photo.drop:nth-of-type(7) { animation-delay: 1.2s; }
+.photo.drop:nth-of-type(8) { animation-delay: 1.4s; }
+
+
+/* Keyframes drop → jatuh sekali ke bawah */
 @keyframes drop {
   0% {
-    transform: translate(-50%, 0);
-    opacity: 0;
+    transform: translate(-50%, -50px); /* mulai sedikit di atas printer */
+    opacity: 0; /* benar-benar hilang */
   }
-  20% {
-    opacity: 1; /* mulai terlihat setelah sedikit jatuh */
+  15% {
+    opacity: 1; /* cepat jadi terlihat */
   }
   100% {
-    transform: translate(-50%, 150vh); /* jatuh keluar layar (150% tinggi viewport) */
-    opacity: 1;
+    transform: translate(-50%, 100vh); /* jatuh ke bawah layar */
+    opacity: 1; /* tetap terlihat */
   }
 }

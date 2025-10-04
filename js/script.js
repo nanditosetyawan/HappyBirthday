@@ -57,7 +57,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     requestWebPermission();
 
-    
 });
 
 
@@ -433,7 +432,20 @@ function showEnggak() {
 }
 
 //kertad
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("printBtn");
+  const photos = document.querySelectorAll(".photo");
 
+  btn.addEventListener("click", () => {
+    photos.forEach((photo, index) => {
+      photo.classList.remove("drop");   // reset hanya foto
+      void photo.offsetWidth;           // reflow
+      setTimeout(() => {
+        photo.classList.add("drop");
+      }, index * 400);
+    });
+  });
+});
 
 
 function goHome() {
@@ -441,23 +453,23 @@ function goHome() {
 }
 
 
- // Fungsi untuk membuat efek hati
-            function createHearts() {
-                // Hapus hati sebelumnya
-                heartsContainer.innerHTML = '';
+//  // Fungsi untuk membuat efek hati
+//             function createHearts() {
+//                 // Hapus hati sebelumnya
+//                 heartsContainer.innerHTML = '';
                 
-                // Buat hati baru
-                for (let i = 0; i < 15; i++) {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart';
-                    heart.innerHTML = '❤️';
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.animationDelay = Math.random() * 2 + 's';
-                    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                    heartsContainer.appendChild(heart);
-                }
-            }
+//                 // Buat hati baru
+//                 for (let i = 0; i < 15; i++) {
+//                     const heart = document.createElement('div');
+//                     heart.className = 'heart';
+//                     heart.innerHTML = '❤️';
+//                     heart.style.left = Math.random() * 100 + '%';
+//                     heart.style.animationDelay = Math.random() * 2 + 's';
+//                     heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+//                     heartsContainer.appendChild(heart);
+//                 }
+//             }
             
-            // Inisialisasi
-            createHearts();
+//             // Inisialisasi
+//             createHearts();
         
