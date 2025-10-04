@@ -430,6 +430,55 @@ body {
 }
 
 /* rapii in page 2*?
+/* ===== Default untuk semua HP ===== */
+#info, #paper {
+  position: relative;                /* jangan absolute */
+  min-height: 100vh;                 /* minimal sama tinggi layar */
+  width: 100%;
+  padding-top: calc(20px + env(safe-area-inset-top));
+  padding-bottom: calc(20px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* smooth di iOS */
+}
+
+/* ===== iPhone 14 ===== */
+@media only screen 
+  and (width: 390px) 
+  and (height: 844px) 
+  and (-webkit-device-pixel-ratio: 3) {
+    #info, #paper {
+        padding-top: calc(20px + env(safe-area-inset-top));
+        padding-bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+}
+
+/* ===== Samsung Galaxy A56 5G (Android) ===== */
+@media only screen 
+  and (width: 412px) 
+  and (height: 915px) 
+  and (-webkit-device-pixel-ratio: 2.625) {
+    #info, #paper {
+        padding-top: 20px;    /* safe-area tidak ada efek */
+        padding-bottom: 20px;
+    }
+}
+
+/* ===== Fallback untuk HP lain tinggi pendek / mini ===== */
+@media (max-height: 700px) {
+  #info, #paper {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+/* ===== Fallback untuk HP sangat tinggi / ultrawide ===== */
+@media (min-height: 900px) {
+  #info, #paper {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
 
 
 /* print foto */
