@@ -485,14 +485,68 @@ body {
 
 /* print foto */
 
-.stack-grid {
-  display: grid;
+.printer-wrapper {
+  position: relative;
   width: 300px;
-  height: 300px;
-  
+  height: 400px; /* tinggi area printer tetap */
+  margin: 0 auto; /* center horizontal */
+  overflow: visible; /* biar foto bisa jatuh keluar */
 }
 
-.stack-grid img {
-  grid-area: 1 / 1;  /* semua gambar menempati grid yang sama */
+/* Printer bawah */
+/* Printer bawah */
+/* Printer bawah */
+.printer-base {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 280px;
+  z-index: 2;
+}
+
+/* Tutup printer */
+.printer-top {
+  position: absolute;
+  bottom: 100%;   /* tepat di atas printer-base */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  z-index: 4;
+}
+/* Foto */
+.photo {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  opacity: 0;
+  width: 280px;
+  z-index: 3;
+  animation: drop 2s linear forwards; /* linear biar terus jatuh */
+}
+
+/* Stagger tiap foto */
+.photo:nth-child(2) { animation-delay: 0.1s; }
+.photo:nth-child(3) { animation-delay: 0.2s; }
+.photo:nth-child(4) { animation-delay: 0.3s; }
+.photo:nth-child(5) { animation-delay: 0.4s; }
+.photo:nth-child(6) { animation-delay: 0.5s; }
+.photo:nth-child(7) { animation-delay: 0.6s; }
+.photo:nth-child(8) { animation-delay: 0.7s; }
+.photo:nth-child(9) { animation-delay: 0.8s; }
+
+/* Animasi drop terus jatuh */
+@keyframes drop {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1; /* mulai terlihat setelah sedikit jatuh */
+  }
+  100% {
+    transform: translate(-50%, 150vh); /* jatuh keluar layar (150% tinggi viewport) */
+    opacity: 1;
+  }
 }
