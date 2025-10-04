@@ -444,6 +444,10 @@ document.addEventListener("DOMContentLoaded", () => {
         photo.classList.add("drop");
       }, index * 400);
     });
+        // setelah 7.3 detik jalankan goToPage('foto')
+    setTimeout(() => {
+      goToPage('foto');
+    }, 7500);
   });
 });
 
