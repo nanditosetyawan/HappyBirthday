@@ -488,17 +488,15 @@ body {
 .printer-wrapper {
   position: relative;
   width: 300px;
-  height: 400px; /* tinggi area printer tetap */
-  margin: 0 auto; /* center horizontal */
-  overflow: visible; /* biar foto bisa jatuh keluar */
+  height: 400px;
+  margin: 0 auto;
+  overflow: visible;
 }
 
 /* Printer bawah */
-/* Printer bawah */
-/* Printer bawah */
 .printer-base {
   position: absolute;
-  bottom: 0;
+  top: 200px; /* posisi dasar printer */
   left: 50%;
   transform: translateX(-50%);
   width: 280px;
@@ -508,11 +506,11 @@ body {
 /* Tutup printer */
 .printer-top {
   position: absolute;
-  bottom: 100%;   /* tepat di atas printer-base */
+  top: 200px; /* samain dengan base */
   left: 50%;
   transform: translateX(-50%);
   width: 280px;
-  z-index: 4;
+  z-index: 4; /* biar di atas foto & base */
 }
 /* Foto */
 .photo {
