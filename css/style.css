@@ -607,7 +607,7 @@ body {
   /* foto kiri bawah */
   top: 50%;
   left: -7%;
-  width: 210px;
+  width: 230px;
   z-index: 7;
   transform: rotate(27deg);
 }
@@ -615,7 +615,7 @@ body {
   /* foto tengah */
   top: 22%;
   left: 18%; 
-  width: 240px;
+  width: 260px;
   z-index: 8;
   transform: rotate(5deg);
 }
@@ -629,9 +629,9 @@ body {
 
 #foto5 {
   /* foto kuliah */
-  top: 22%;
+  top: 20%;
   left: -15%;
-  width: 250px;
+  width: 260px;
   transform: rotate(18deg);
 }
 
