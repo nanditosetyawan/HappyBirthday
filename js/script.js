@@ -449,6 +449,24 @@ document.addEventListener("DOMContentLoaded", () => {
       goToPage('foto');
     }, 7500);
   });
+
+
+//foto per foto halaman baru
+
+
+const photo = document.querySelectorAll(".fotoo-item");
+
+photo.forEach((img, index) => {
+  setTimeout(() => {
+    img.classList.add("show");
+  }, index * 1000); // jeda antar foto (1 detik per foto)
+});
+
+
+
+
+
+
 });
 
 

@@ -564,3 +564,56 @@ body {
     opacity: 1;
   }
 }
+
+
+
+
+
+/* foto nempel */
+
+/* Container full screen */
+.fotoo-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* kalau keluar layar otomatis terpotong */
+}
+
+/* Style dasar semua foto */
+.fotoo-item {
+  position: absolute;
+  width: 120px; /* default size (bisa kamu ubah) */
+  opacity: 0;
+  z-index: 1;
+  transform: scale(0.8);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Efek saat tampil */
+.fotoo-item.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Posisi & rotasi unik tiap foto */
+#foto1 {
+  top: -1%;
+  left: -8%;
+  width: 185px;
+  transform: rotate(7deg);
+}
+#foto2 {
+  top: 40%;
+  left: 30%;
+  transform: rotate(5deg);
+}
+#foto3 {
+  top: 70%;
+  left: 50%;
+  transform: rotate(-15deg);
+}
+#foto4 {
+  top: 20%;
+  left: 70%;
+  transform: rotate(10deg);
+}
