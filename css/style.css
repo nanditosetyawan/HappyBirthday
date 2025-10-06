@@ -579,6 +579,17 @@ body {
   overflow: hidden; /* kalau keluar layar otomatis terpotong */
 }
 
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* Style dasar semua foto */
 .fotoo-item {
   position: absolute;
@@ -586,14 +597,19 @@ body {
   opacity: 0;
   z-index: 1;
   transform: scale(0.8);
-  transition: opacity 1s ease, transform 1s ease;
+ animation: fadeInZoom 0.9s ease forwards;
 }
 
-/* Efek saat tampil */
-.fotoo-item.show {
-  opacity: 1;
-  transform: scale(1);
-}
+/* Urutan animasi masuk */
+#foto1 { animation-delay: 0s; }
+#foto5 { animation-delay: 0.5s; }
+#foto4 { animation-delay: 1s; }
+#foto8 { animation-delay: 1.5s; }
+#foto6 { animation-delay: 2s; }
+#foto7 { animation-delay: 2.5s; }
+#foto2 { animation-delay: 3s; }
+#foto3 { animation-delay: 3.5s; }
+
 
 /* Posisi & rotasi unik tiap foto */
 #foto1 {
