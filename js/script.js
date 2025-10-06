@@ -156,6 +156,13 @@ function goToPage(id) {
     }, 300);
   }
 
+  if (id === 'foto') {
+     // Tunggu 14 detik setelah animasi dimulai
+  setTimeout(() => {
+    goToPage('fotostrip'); // ganti "halaman2" sesuai ID / target kamu
+  }, 12400);
+  }
+
   // Halaman hbdangka atau surrat → animasi umur
   if (id === 'hbdangka' || id === 'surrat') {
     startAgeAnimation();
