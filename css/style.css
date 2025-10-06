@@ -598,47 +598,47 @@ body {
 /* Posisi & rotasi unik tiap foto */
 #foto1 {
   /* foto kiri atas */
-  top: 2%;
-  left: -8%;
+  top: 1vh;
+  left: -6vw;
   width: 210px;
   transform: rotate(7deg);
 }
 #foto2 {
   /* foto kiri bawah */
-  top: 50%;
-  left: -7%;
+  top: 53vh;
+  left: -7vw;
   width: 230px;
   z-index: 7;
   transform: rotate(27deg);
 }
 #foto3 {
   /* foto tengah */
-  top: 22%;
-  left: 18%; 
+  top: 23vh;
+  left: 16vw; 
   width: 260px;
   z-index: 8;
   transform: rotate(5deg);
 }
 #foto4 {
   /* kecil dompet */
-  top: 30%;
-  left: 59%;
+  top: 31vh;
+  left: 59vw;
   width: 186px;
   transform: rotate(-9deg);
 }
 
 #foto5 {
   /* foto kuliah */
-  top: 20%;
-  left: -15%;
+  top: 19vh;
+  left: -14vw;
   width: 260px;
   transform: rotate(18deg);
 }
 
 #foto6 {
   /* foto wisuda */
-  top: 3%;
-  left: 30%;
+  top: 1vh;
+  left: 32vw;
   width: 180px;
   z-index: 2;
   transform: rotate(-10deg);
@@ -646,16 +646,16 @@ body {
 
 #foto7 {
   /* foto kanan bawah dikepala */
-  top: 53%;
-  left: 49%;
+  top: 55vh;
+  left: 53vw;
   width: 210px;
   transform: rotate(-19deg);
 }
 
 #foto8 {
   /* foto kanan atas dipipi */
-  top: 3%;
-  left: 59%;
+  top: 3vh;
+  left: 60vw;
   width: 180px;
   z-index: 1;
   transform: rotate(19deg);
