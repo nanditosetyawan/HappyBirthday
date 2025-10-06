@@ -596,10 +596,15 @@ body {
   width: 120px; /* default size (bisa kamu ubah) */
   opacity: 0;
   z-index: 1;
-  transform: scale(0.8);
+
  animation: fadeInZoom 0.9s ease forwards;
 }
-
+/* Semua gambar di dalam wrapper */
+.fotoo-item img {
+  width: 100%;
+  display: block;
+  transform-origin: center;
+}
 /* Urutan animasi masuk */
 #foto1 { animation-delay: 0s; }
 #foto5 { animation-delay: 0.5s; }
@@ -611,68 +616,27 @@ body {
 #foto3 { animation-delay: 3.5s; }
 
 
-/* Posisi & rotasi unik tiap foto */
-#foto1 {
-  /* foto kiri atas */
-  top: 1vh;
-  left: -6vw;
-  width: 210px;
-  transform: rotate(7deg);
-}
-#foto2 {
-  /* foto kiri bawah */
-  top: 53vh;
-  left: -7vw;
-  width: 230px;
-  z-index: 7;
-  transform: rotate(27deg);
-}
-#foto3 {
-  /* foto tengah */
-  top: 20vh;
-  left: 16vw; 
-  width: 260px;
-  z-index: 8;
-  transform: rotate(5deg);
-}
-#foto4 {
-  /* kecil dompet */
-  top: 31vh;
-  left: 59vw;
-  width: 186px;
-  transform: rotate(-9deg);
-}
+/* Posisi dan rotasi unik masing-masing foto */
+#foto1 { top: 1vh; left: -6vw; width: 210px; }
+#foto1 img { transform: rotate(7deg); }
 
-#foto5 {
-  /* foto kuliah */
-  top: 19vh;
-  left: -16vw;
-  width: 275px;
-  transform: rotate(18deg);
-}
+#foto2 { top: 53vh; left: -7vw; width: 230px; z-index: 7; }
+#foto2 img { transform: rotate(27deg); }
 
-#foto6 {
-  /* foto wisuda */
-  top: 1vh;
-  left: 32vw;
-  width: 180px;
-  z-index: 2;
-  transform: rotate(-10deg);
-}
+#foto3 { top: 20vh; left: 16vw; width: 260px; z-index: 8; }
+#foto3 img { transform: rotate(5deg); }
 
-#foto7 {
-  /* foto kanan bawah dikepala */
-  top: 55vh;
-  left: 53vw;
-  width: 210px;
-  transform: rotate(-19deg);
-}
+#foto4 { top: 31vh; left: 59vw; width: 186px; }
+#foto4 img { transform: rotate(-9deg); }
 
-#foto8 {
-  /* foto kanan atas dipipi */
-  top: 3vh;
-  left: 60vw;
-  width: 180px;
-  z-index: 1;
-  transform: rotate(19deg);
-}
+#foto5 { top: 19vh; left: -16vw; width: 275px; }
+#foto5 img { transform: rotate(18deg); }
+
+#foto6 { top: 1vh; left: 32vw; width: 180px; z-index: 2; }
+#foto6 img { transform: rotate(-10deg); }
+
+#foto7 { top: 55vh; left: 53vw; width: 210px; }
+#foto7 img { transform: rotate(-19deg); }
+
+#foto8 { top: 3vh; left: 60vw; width: 180px; z-index: 1; }
+#foto8 img { transform: rotate(19deg); }
