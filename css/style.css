@@ -640,3 +640,146 @@ body {
 
 #foto8 { top: 3vh; left: 60vw; width: 180px; z-index: 1; }
 #foto8 img { transform: rotate(19deg); }
+
+/* animasi kado */
+  .kado-img {
+  width: 250px;
+
+  object-fit: cover;
+  z-index: 100;
+  cursor: pointer;
+  animation: denyut 1.5s ease-in-out infinite, loncat 2s ease-in-out infinite;
+  transform-origin: bottom center;
+  transition: transform 0.3s;
+}
+
+.kado-img.kaget {
+  animation: kejutan 0.6s ease;
+}
+
+@keyframes denyut {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes loncat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes kejutan {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(-10deg); }
+  50% { transform: scale(0.9) rotate(10deg); }
+  75% { transform: scale(1.1) rotate(-5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* kadobuka */
+
+#kadoScene {
+  position: relative;
+  text-align: center;
+  margin-top: 30px;
+
+}
+#fotostrip {
+  overflow-y: auto;    /* aktifkan scroll vertikal */
+  max-height: 100vh;   /* biar scroll terbatas di tinggi layar */
+  margin-bottom: 6vh;   /* jarak dari bawah layar, pakai satuan viewport biar adaptif */
+}
+
+#kadobuka {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+#fotokadocontainer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.fotokado {
+  width: 170px;
+
+  object-fit: cover;
+
+  position: absolute;
+  transition: all 0.6s ease;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.next-btnkado{
+   position: relative;
+padding: 10px 20px;
+  font-size: 18px;
+  top: 55vh;
+  
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #ffc9d6;
+  color: #111;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform .15s ease;
+  height: 50px;
+}
+.next-btnkado:hover { transform: translateY(-3px); }
+
+
+
+/* Pastikan ditempatkan *setelah* .fotokadomuncul agar tidak tertimpa */
+.fotokado1.fotokadomuncul {
+  margin-top: 12vh;
+  transform: rotate(-10deg) translateX(-40px) scale(1);
+  opacity: 1;
+}
+
+.fotokado2.fotokadomuncul {
+  margin-top: 11vh;
+  transform: rotate(10deg) translateX(40px) scale(1);
+  opacity: 1;
+}
+
+/* Tulisannya ditaruh di atas gambar */
+#kadoScene .layered-wrapper {
+  position: absolute;
+  top: -38vh;  /* geser lebih tinggi dari kado */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10; /* pastikan di atas gambar */
+  white-space: nowrap; /* cegah teks turun ke bawah */
+}
+
+#fotokadobesar {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+#fotokadozoom {
+  width: 70%;
+  max-width: 220px;
+
+  transition: transform 0.5s ease;
+}
+
+#closekadobtn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 36px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}

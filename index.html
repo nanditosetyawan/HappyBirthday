@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Happy Birthday</title>
+  <link rel="icon" type="image/png" href="gambar/favicon.png">
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -198,20 +199,61 @@
     </div>
   </div>
 
- <div class="page" id="fotostrip">
+ <div class="page" id="kadoo">
     <div class="content">
-<div class="paper">
-      <h2 id="ucapan">Ucapan Spesial</h2>
-    
-            <div class="controls">
-        <button class="next-btn" onclick="goToPage('fotopprint')">lanjutt sihh</button>
+      <div class="layered-text">
+        <span class="bg" style="font-size: 38px;">BUKA KADONYA . . .</span>
+        <span class="fg" style="font-size: 38px;">BUKA KADONYA . . .</span>
       </div>
+      <br>
+            <div class="controls">
+               <!-- letakkan ini di tempat kado sekarang -->
+<div id="kado">
+  <img src="gambar/kado.png" alt="Kado" class="kado-img"
+       onclick="onKadoClick(this)">
 </div>
+
+
+<br><br><br>
+       
+      </div>
+
 
 
     </div>
   </div>
 
+<div class="page" id="fotostrip">
+  <div class="content">
+
+
+    <div class="controls">
+        <div id="kadoScene">
+              <div class="layered-wrapper">
+      <div class="layered-text">
+
+        <span class="bg" style="font-size: 38px;">klik fotonya duluu</span>
+        <span class="fg" style="font-size: 38px;">klik fotonya duluu</span>
+     
+      </div>
+    </div>
+  <img src="gambar/kadobuka.png" alt="Kado Terbuka" id="kadobuka" width="250">
+
+  <div id="fotokadocontainer">
+    <img src="gambar/fotokado1.png" class="fotokado fotokado1" alt="Foto Kado 1">
+    <img src="gambar/fotokado2.png" class="fotokado fotokado2" alt="Foto Kado 2">
+     <button class="next-btnkado" onclick="goToPage('kue')">tap 😝</button>
+  </div>
+
+  <div id="fotokadobesar">
+    <img id="fotokadozoom" src="" alt="Foto Kado Zoom">
+    <span id="closekadobtn">×</span>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
 
   
   <!-- Halaman 7 -->
@@ -285,7 +327,7 @@
     </div>
 
     <div class="controls">
-        <img src="gambar/terima.gif" alt="haloo" width="290px" class="gif-rounded"/>
+        <img src="gambar/terimakasi.png" alt="haloo" width="290px" class="gif-rounded"/>
 <br><br><br>
 
       <button class="next-btn" style="height: 50px; width: 120px; background: #e84646; color: #ffffff;" onclick="goHome()">RESET</button>

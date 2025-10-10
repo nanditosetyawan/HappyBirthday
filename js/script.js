@@ -42,7 +42,28 @@
 })();
 
 
+// letakkan di script.js (di luar DOMContentLoaded)
+window.onKadoClick = function(el) {
+  if (!el) return;
 
+  // cegah klik ganda
+  if (el.dataset.busy === '1') return;
+  el.dataset.busy = '1';
+
+  // tambahkan kelas kejutan (CSS .kaget sudah ada)
+  el.classList.add('kaget');
+
+  // durasi harus sama dengan animasi .kaget (0.6s di CSS)
+  const DURATION = 600;
+
+  setTimeout(() => {
+    el.classList.remove('kaget');
+    delete el.dataset.busy;
+
+    // panggil fungsi navigasi yang sudah ada (tetap gunakan goToPage milikmu)
+    goToPage('fotostrip');
+  }, DURATION);
+};
 
 
 // 1. Variabel global & volume
@@ -57,8 +78,61 @@ window.addEventListener('DOMContentLoaded', () => {
 
     requestWebPermission();
 
+ const fotokado1 = document.querySelector('.fotokado1');
+  const fotokado2 = document.querySelector('.fotokado2');
+
+  // beri sedikit delay supaya browser bisa render opacity awal
+  setTimeout(() => {
+    fotokado1.classList.add('fotokadomuncul');
+  }, 50);
+
+  setTimeout(() => {
+    fotokado2.classList.add('fotokadomuncul');
+  }, 250); // delay kedua biar muncul bergantian
+
 });
 
+function startKadoSequence() {
+  const kadobuka = document.getElementById('kadobuka');
+  const fotokadocontainer = document.getElementById('fotokadocontainer');
+  const fotokados = document.querySelectorAll('.fotokado');
+  const lanjutkadobtn = document.getElementById('lanjutkadobtn');
+  const fotokadobesar = document.getElementById('fotokadobesar');
+  const fotokadozoom = document.getElementById('fotokadozoom');
+  const closekadobtn = document.getElementById('closekadobtn');
+
+  if (!kadobuka) return; // kalau halaman kado belum tampil, hentikan
+
+  // 1️⃣ Setelah 4 detik, hilangkan kadobuka & tampilkan dua foto
+  setTimeout(() => {
+    kadobuka.style.opacity = 0;
+    setTimeout(() => {
+      kadobuka.style.display = 'none';
+      fotokadocontainer.style.display = 'flex';
+
+      fotokados.forEach((f, i) => {
+        setTimeout(() => f.classList.add('fotokadomuncul'), i * 400);
+      });
+
+      setTimeout(() => lanjutkadobtn.style.display = 'inline-block', 1200);
+    }, 1000);
+  }, 4000);
+
+  // 2️⃣ Klik salah satu foto → tampil besar
+  fotokados.forEach(foto => {
+    foto.addEventListener('click', () => {
+      fotokadozoom.src = foto.getAttribute('src');
+      fotokadocontainer.style.display = 'none';
+      fotokadobesar.style.display = 'flex';
+    });
+  });
+
+  // 3️⃣ Klik tombol close → kembali ke dua foto
+  closekadobtn.addEventListener('click', () => {
+    fotokadobesar.style.display = 'none';
+    fotokadocontainer.style.display = 'flex';
+  });
+}
 
 
 
@@ -159,9 +233,24 @@ function goToPage(id) {
   if (id === 'foto') {
      // Tunggu 14 detik setelah animasi dimulai
   setTimeout(() => {
-    goToPage('fotostrip'); // ganti "halaman2" sesuai ID / target kamu
+    goToPage('kadoo'); // ganti "halaman2" sesuai ID / target kamu
   }, 12400);
   }
+
+  if (id === 'kadoo') {
+       // Ganti konten halaman jadi "fotostrip"
+   const foto = document.getElementById('foto');
+  const kado = document.getElementById('kadoo');
+
+  if (foto) foto.classList.remove('active');
+  if (kado) kado.classList.add('active');
+  }
+
+if (id === 'fotostrip') {
+  startKadoSequence();
+}
+
+
 
   // Halaman hbdangka atau surrat → animasi umur
   if (id === 'hbdangka' || id === 'surrat') {
