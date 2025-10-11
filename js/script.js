@@ -1,3 +1,89 @@
+// =============== PRELOAD SEMUA ASET ===============
+window.addEventListener("DOMContentLoaded", () => {
+  const loadingScreen = document.getElementById("loading-screen");
+  const progressFill = document.getElementById("progress-fill");
+  const loadingText = document.getElementById("loading-text");
+
+  // Ambil semua gambar dari HTML
+  const images = Array.from(document.images).map(img => img.src);
+
+  // Ambil semua audio dari HTML (jika ada)
+  const audiosInHTML = Array.from(document.querySelectorAll("audio, source"))
+    .map(a => a.src)
+    .filter(Boolean);
+
+  // Ambil semua audio dari pageMusicMap (kalau variabelnya sudah didefinisikan)
+  let audiosFromJS = [];
+  if (typeof pageMusicMap !== "undefined") {
+    audiosFromJS = Object.values(pageMusicMap)
+      .filter(Boolean) // pastikan tidak kosong/null
+      .map(src => src.trim());
+  }
+
+  // Gabungkan semuanya dan hapus duplikat
+  const assets = [...new Set([...images, ...audiosInHTML, ...audiosFromJS])];
+  let loaded = 0;
+
+  function updateProgress() {
+    const percent = Math.round((loaded / assets.length) * 100);
+    progressFill.style.width = percent + "%";
+    loadingText.textContent = `Sabar yaa... (${percent}%) lagi muat semua hadiah 🎁`;
+  }
+
+  async function preloadAll() {
+    if (assets.length === 0) {
+      finishLoading();
+      return;
+    }
+
+    const promises = assets.map(src => {
+      return new Promise(resolve => {
+        let el;
+        if (src.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+          el = new Image();
+          el.onload = el.onerror = () => {
+            loaded++;
+            updateProgress();
+            resolve();
+          };
+          el.src = src;
+        } else if (src.match(/\.(mp3|ogg|wav)$/i)) {
+          el = new Audio();
+          el.oncanplaythrough = el.onerror = () => {
+            loaded++;
+            updateProgress();
+            resolve();
+          };
+          el.src = src;
+          el.load();
+        } else {
+          resolve();
+        }
+      });
+    });
+
+    await Promise.all(promises);
+    finishLoading();
+  }
+
+  function finishLoading() {
+    loadingText.textContent = "Siap! Semua hadiah sudah siap 🎉";
+    loadingScreen.style.transition = "opacity 0.6s ease";
+    loadingScreen.style.opacity = 0;
+    setTimeout(() => {
+      loadingScreen.style.display = "none";
+      document.body.style.overflow = "auto";
+    }, 800);
+  }
+
+  document.body.style.overflow = "hidden";
+  preloadAll();
+});
+
+
+
+
+
 (function() {
     // Fungsi utama untuk meminta izin web dulu
     function requestWebPermission() {

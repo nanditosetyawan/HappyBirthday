@@ -691,6 +691,7 @@ body {
 
 #kadobuka {
   opacity: 1;
+  width: 250px;
   transition: opacity 1s ease;
 }
 
@@ -782,4 +783,150 @@ padding: 10px 20px;
   color: white;
   cursor: pointer;
   font-weight: bold;
+}
+
+
+/* loading bar */
+/* ===== LOADING SCREEN ===== */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #222, #000);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  text-align: center;
+}
+
+#progress-bar {
+  width: 70%;
+  height: 20px;
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+#progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #ff66b3;
+  transition: width 0.3s ease;
+}
+
+#loading-text {
+  margin-top: 30px;
+  font-size: 18px;
+  color: #ffb3d9;
+}
+
+/* ===== Hamster Animasi (revisi lebih cepat dan lebar langkahnya) ===== */
+.hamster-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 30px;
+}
+
+.wheel {
+  width: 140px;
+  height: 140px;
+  border: 6px solid #666;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 15px #444 inset;
+  animation: spin 0.6s linear infinite; /* lebih cepat */
+}
+
+.hamster {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  width: 70px;
+  height: 45px;
+  transform: translateX(-50%);
+  animation: run 0.25s linear infinite; /* lebih cepat */
+}
+
+.hamster .ear,
+.hamster .eye,
+.hamster .nose,
+.hamster .body,
+.hamster .tail,
+.hamster .leg {
+  position: absolute;
+  background: #f0c27b;
+  border-radius: 50%;
+}
+
+.hamster .body {
+  width: 70px;
+  height: 45px;
+  background: linear-gradient(to bottom, #f5d7a1, #e6a553);
+}
+
+.hamster .ear {
+  width: 14px;
+  height: 14px;
+  background: #ffd5a1;
+  top: -7px;
+  left: 12px;
+}
+
+.hamster .eye {
+  width: 7px;
+  height: 7px;
+  background: black;
+  top: 11px;
+  left: 48px;
+}
+
+.hamster .nose {
+  width: 7px;
+  height: 7px;
+  background: pink;
+  top: 20px;
+  left: 65px;
+}
+
+.hamster .tail {
+  width: 12px;
+  height: 12px;
+  background: #f5d7a1;
+  right: -7px;
+  bottom: 6px;
+}
+
+.hamster .leg {
+  width: 14px;
+  height: 20px;
+  background: #e6a553;
+  bottom: 0;
+  transform-origin: top center;
+}
+
+.hamster .leg.front {
+  left: 8px;
+  animation: legMove 0.25s linear infinite;
+}
+.hamster .leg.back {
+  right: 8px;
+  animation: legMove 0.25s linear infinite 0.125s;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes run {
+  0%, 100% { transform: translateX(-50%) rotate(2deg); }
+  50% { transform: translateX(-50%) rotate(-2deg); }
+}
+
+@keyframes legMove {
+  0%, 100% { transform: rotate(25deg); }
+  50% { transform: rotate(-25deg); }
 }
